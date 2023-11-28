@@ -45,24 +45,20 @@ public class TaskController : ControllerBase
         }
     }
 
-    [HttpPut("UpdateTask/{id}")]
-    public async Task<IActionResult> UpdateTask(string id, UpdateDto updateDto)
+    [HttpPut("UpdateTask")]
+    public async Task<IActionResult> UpdateTask(UpdateDto updateDto)
     {
         try
         {
-            var existingTask = await _taskService.GetTaskById(id);
-            if (existingTask == null)
-                return NotFound("Tâche introuvable");
-
-            var letask = _mapper.Map<Task>(updateDto);
-            var updateTask = await _taskService.UpdateTask(id, letask);
-            if (!updateTask)
-                return BadRequest("Mise à jour échoué");
-            return Ok(updateTask);
+            var leTask = _mapper.Map<Task>(updateDto);
+            var existingTask = await _taskService.UpdateTask(leTask);
+            if (existingTask)
+                return Ok("Task update successfully");
+            return NotFound();
         }
         catch (Exception)
         {
-            return StatusCode(500, "Erreur au niveau du serveur");
+            return StatusCode(statusCode: 500, value: "Erreur au niveau du serveur");
         }
     }
 

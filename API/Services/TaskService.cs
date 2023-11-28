@@ -20,15 +20,14 @@ public class TaskService : ITask
         return lestask;
     }
 
-    public async Task<Task> GetTaskById(string id)
+    public async Task<Task?> GetTaskById(string id)
     {
         var task = await _dbContext.Tasks.FindAsync(id);
         if (task == null)
             return null;
         return task;
     }
-
-
+    
     public async Task<Task> CreateTask(Task task)
     {
         var letask = await _dbContext.Tasks.AddAsync(task);
@@ -36,18 +35,20 @@ public class TaskService : ITask
         return letask.Entity;
     }
     
-    public async Task<bool> UpdateTask(string id, Task updateTask)
+    public async Task<bool> UpdateTask(Task task)
     {
-        var existingTask = await _dbContext.Tasks.FindAsync(id);
-        if (existingTask == null)
-            return false;
+        var existantTask = await _dbContext.Tasks.FirstOrDefaultAsync(t=>t.Id == task.Id);
+        if (existantTask != null)
+        {
+            existantTask.Name = task.Name;
+            existantTask.Description = task.Description;
+            existantTask.Favorite = task.Favorite;
+            
+            await _dbContext.SaveChangesAsync();
+            return true;
+        }
 
-        existingTask.Name = updateTask.Name;
-        existingTask.Description = updateTask.Description;
-        existingTask.Favorite = updateTask.Favorite;
-
-        await _dbContext.SaveChangesAsync();
-        return true;
+        return false;
     }
     
     public async Task<bool> DeleteTask(string id)
