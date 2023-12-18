@@ -1,3 +1,4 @@
+using API.Data;
 using API.DTO;
 using API.Services;
 using AutoMapper;
@@ -10,20 +11,29 @@ namespace API.Controllers;
 [Route("api/[controller]")]
 public class TaskController : ControllerBase
 {
-    private readonly TaskService _taskService;
+    private readonly TaskDbContext _context;
     private readonly IMapper _mapper;
+    private readonly TaskService _taskService;
 
-    public TaskController(TaskService taskService, IMapper mapper)
+    private TaskController(TaskService taskService, IMapper mapper)
     {
-        _mapper = mapper;
-        _taskService = taskService;
+        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper)
+        );
+        _taskService = taskService ?? throw new ArgumentNullException(nameof(taskService));
+    }
+    
+    public TaskController(TaskDbContext context)
+    {
+        _context = context;
     }
 
+
     [HttpGet("GetAllTask")]
-    public async Task<OkObjectResult> GetAllTask()
+    public async Task<ActionResult<List<Task>>> GetAllTask()
     {
         var lestask = await _taskService.GetAllTask();
-        return Ok(lestask);
+        var taskdto = _mapper?.Map<List<TaskDto>>(lestask);
+        return Ok(taskdto);
     }
 
     [HttpPost("CreateTask")]
@@ -58,7 +68,7 @@ public class TaskController : ControllerBase
         }
         catch (Exception)
         {
-            return StatusCode(statusCode: 500, value: "Erreur au niveau du serveur");
+            return StatusCode(500, "Erreur au niveau du serveur");
         }
     }
 

@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager", "TaskManager\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{F8AD605D-08DE-4080-A796-1DB38874584D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_Test", "API_Test\API_Test.csproj", "{6EA7EE9F-303B-4EB7-9E79-608730F137AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{F8AD605D-08DE-4080-A796-1DB38874584D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8AD605D-08DE-4080-A796-1DB38874584D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8AD605D-08DE-4080-A796-1DB38874584D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EA7EE9F-303B-4EB7-9E79-608730F137AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EA7EE9F-303B-4EB7-9E79-608730F137AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EA7EE9F-303B-4EB7-9E79-608730F137AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EA7EE9F-303B-4EB7-9E79-608730F137AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

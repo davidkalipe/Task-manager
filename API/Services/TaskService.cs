@@ -11,7 +11,7 @@ public class TaskService : ITask
 
     public TaskService(TaskDbContext dbContext)
     {
-        _dbContext = dbContext;
+        _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
     }
     
     public async Task<List<Task>> GetAllTask()

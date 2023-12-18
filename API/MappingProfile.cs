@@ -10,5 +10,6 @@ public class MappingProfile : Profile
     {
         CreateMap<Task, CreateDto>().ReverseMap();
         CreateMap<Task, UpdateDto>().ReverseMap();
+        CreateMap<Task, TaskDto>().ReverseMap();
     }
 }
