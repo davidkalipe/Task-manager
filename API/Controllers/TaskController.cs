@@ -11,28 +11,21 @@ namespace API.Controllers;
 [Route("api/[controller]")]
 public class TaskController : ControllerBase
 {
-    private readonly TaskDbContext _context;
     private readonly IMapper _mapper;
     private readonly TaskService _taskService;
 
-    private TaskController(TaskService taskService, IMapper mapper)
+    public TaskController(TaskService taskService, IMapper mapper)
     {
-        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper)
-        );
-        _taskService = taskService ?? throw new ArgumentNullException(nameof(taskService));
+        _mapper = mapper;
+        _taskService = taskService;
     }
     
-    public TaskController(TaskDbContext context)
-    {
-        _context = context;
-    }
-
 
     [HttpGet("GetAllTask")]
     public async Task<ActionResult<List<Task>>> GetAllTask()
     {
         var lestask = await _taskService.GetAllTask();
-        var taskdto = _mapper?.Map<List<TaskDto>>(lestask);
+        var taskdto = _mapper.Map<List<TaskDto>>(lestask);
         return Ok(taskdto);
     }
 

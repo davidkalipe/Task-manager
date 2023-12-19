@@ -3,6 +3,7 @@ using API.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.Models;
+using API.Services;
 using Task = API.Models.Task;
 
 namespace API_Test;
@@ -16,15 +17,26 @@ public class TaskControllerTest
     public async void GetTask_All_GetAll()
     {
         //Arrange
-        TaskController controller = new TaskController(_contextMock.Context);
+        TaskService service = new TaskService(_contextMock.Context);
         
         //Act
-        var result = await controller.GetAllTask();
+        var result = await service.GetAllTask();
         
         //Assert
-        var actionResult = Assert.IsType<ActionResult<List<Task>>>(result);
-        var returnValue = Assert.IsType<List<Task>>(actionResult.Value);
+        var returnValue = Assert.IsType<List<Task>>(result);
         Assert.Equal(_contextMock.Context.Tasks.Count(), returnValue.Count);
 
+    }
+
+    [Fact]
+    public async void CreateTask_Verify_Task_Creation()
+    {
+        TaskService service = new TaskService(_contextMock.Context);
+        Task task = new Task();
+
+        var result = await service.CreateTask(task);
+
+        var actionResult = Assert.IsType<Task>(result);
+        Assert.Equal(task.Id, actionResult.Id);
     }
 }

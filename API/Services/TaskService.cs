@@ -11,7 +11,7 @@ public class TaskService : ITask
 
     public TaskService(TaskDbContext dbContext)
     {
-        _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+        _dbContext = dbContext;
     }
     
     public async Task<List<Task>> GetAllTask()
@@ -23,8 +23,6 @@ public class TaskService : ITask
     public async Task<Task?> GetTaskById(string id)
     {
         var task = await _dbContext.Tasks.FindAsync(id);
-        if (task == null)
-            return null;
         return task;
     }
     
