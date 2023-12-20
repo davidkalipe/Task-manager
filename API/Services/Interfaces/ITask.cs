@@ -8,6 +8,6 @@ public interface ITask
     Task<List<Task>> GetAllTask();
     Task<Task?> GetTaskById(string id);
     Task<Task> CreateTask(Task task);
-    Task<bool> UpdateTask(Task task);
+    Task<Task> UpdateTask(Task task);
     Task<bool> DeleteTask(string id);
 }

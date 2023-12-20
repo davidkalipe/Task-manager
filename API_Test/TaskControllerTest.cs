@@ -25,18 +25,41 @@ public class TaskControllerTest
         //Assert
         var returnValue = Assert.IsType<List<Task>>(result);
         Assert.Equal(_contextMock.Context.Tasks.Count(), returnValue.Count);
-
     }
 
     [Fact]
     public async void CreateTask_Verify_Task_Creation()
     {
         TaskService service = new TaskService(_contextMock.Context);
-        Task task = new Task();
+        Task task = new Task()
+        {
+            Id = "hucjqeb",
+            Name = "Revision",
+            Description = "Deviser Java",
+            Favorite = true
+        };
 
         var result = await service.CreateTask(task);
 
         var actionResult = Assert.IsType<Task>(result);
         Assert.Equal(task.Id, actionResult.Id);
+    }
+
+
+    [Fact]
+    public async void Updatetask_Verify_Task_Updating()
+    {
+        TaskService service = new TaskService(_contextMock.Context);
+        Task task = new Task()
+        {
+            Id = 
+            Name = "hello",
+            Description = "helloworld",
+            Favorite = false,
+        };
+        
+        var result = await service.UpdateTask(task);
+        var actionResult = Assert.IsType<Task>(result);
+        Assert.;
     }
 }

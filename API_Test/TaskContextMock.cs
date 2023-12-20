@@ -22,14 +22,12 @@ internal class TaskContextMock
         Context = new TaskDbContext(_contextOptions);
         Context.Database.EnsureCreated();
 
-        Task task = new Task
-            { Id = "asdfgjhg", Name = "Se reveiller", Description = "Très tôt le matin", Favorite = true };
+     
         Task task1 = new Task
             { Id = "poiuy", Name = "Manger", Description = "Dans laprem", Favorite = true };
         Task task2 = new Task
             { Id = "ftgyuhb", Name = "Dormir", Description = "Tôt là 22h", Favorite = true };
 
-        Context.Tasks.Add(task);
         Context.Tasks.Add(task1);
         Context.Tasks.Add(task2);
         Context.SaveChanges();

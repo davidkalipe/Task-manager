@@ -33,20 +33,29 @@ public class TaskService : ITask
         return letask.Entity;
     }
     
-    public async Task<bool> UpdateTask(Task task)
+    public async Task<Task> UpdateTask(Task task)
     {
         var existantTask = await _dbContext.Tasks.FirstOrDefaultAsync(t=>t.Id == task.Id);
+        // if (existantTask != null)
+        // {
+        //     existantTask.Name = task.Name;
+        //     existantTask.Description = task.Description;
+        //     existantTask.Favorite = task.Favorite;
+        //     
+        //     await _dbContext.SaveChangesAsync();
+        // }
         if (existantTask != null)
         {
+            existantTask.Id = task.Id;
             existantTask.Name = task.Name;
             existantTask.Description = task.Description;
             existantTask.Favorite = task.Favorite;
             
             await _dbContext.SaveChangesAsync();
-            return true;
+            return existantTask;
         }
 
-        return false;
+        return null;
     }
     
     public async Task<bool> DeleteTask(string id)

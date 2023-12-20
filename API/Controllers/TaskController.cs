@@ -55,9 +55,7 @@ public class TaskController : ControllerBase
         {
             var leTask = _mapper.Map<Task>(updateDto);
             var existingTask = await _taskService.UpdateTask(leTask);
-            if (existingTask)
-                return Ok("Task update successfully");
-            return NotFound();
+            return Ok("Task update successfully");
         }
         catch (Exception)
         {
