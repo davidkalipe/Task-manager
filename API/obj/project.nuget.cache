@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QPmRbpcFpFR2y/LvTdnXDc/F351iU/zTp9SmwPhgg67zLdaFI7tK0kFDwOZ1xelq+fu6ROpRCVDjDb58GK5LRQ==",
+  "dgSpecHash": "zs8b06Vmnmhvx0eTfgE8/eZ1MRC12xLq7Gv7tSKpJccn1Bgrw+pIFRrmE2pi8YzDIa5PE0EpWRtL4jQ0nIG+vg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\kalip\\RiderProjects\\TaskManager\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\kalip\\RiderProjects\\Task-manager\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kalip\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\kalip\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

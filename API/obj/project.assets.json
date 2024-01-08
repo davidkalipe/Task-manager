@@ -1593,11 +1593,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kalip\\RiderProjects\\TaskManager\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\kalip\\RiderProjects\\Task-manager\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\kalip\\RiderProjects\\TaskManager\\API\\API.csproj",
+      "projectPath": "C:\\Users\\kalip\\RiderProjects\\Task-manager\\API\\API.csproj",
       "packagesPath": "C:\\Users\\kalip\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kalip\\RiderProjects\\TaskManager\\API\\obj\\",
+      "outputPath": "C:\\Users\\kalip\\RiderProjects\\Task-manager\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kalip\\AppData\\Roaming\\NuGet\\NuGet.Config",

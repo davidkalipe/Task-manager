@@ -7342,11 +7342,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kalip\\RiderProjects\\TaskManager\\API_Test\\API_Test.csproj",
+      "projectUniqueName": "C:\\Users\\kalip\\RiderProjects\\Task-manager\\API_Test\\API_Test.csproj",
       "projectName": "API_Test",
-      "projectPath": "C:\\Users\\kalip\\RiderProjects\\TaskManager\\API_Test\\API_Test.csproj",
+      "projectPath": "C:\\Users\\kalip\\RiderProjects\\Task-manager\\API_Test\\API_Test.csproj",
       "packagesPath": "C:\\Users\\kalip\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kalip\\RiderProjects\\TaskManager\\API_Test\\obj\\",
+      "outputPath": "C:\\Users\\kalip\\RiderProjects\\Task-manager\\API_Test\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kalip\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7363,8 +7363,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\kalip\\RiderProjects\\TaskManager\\API\\API.csproj": {
-              "projectPath": "C:\\Users\\kalip\\RiderProjects\\TaskManager\\API\\API.csproj"
+            "C:\\Users\\kalip\\RiderProjects\\Task-manager\\API\\API.csproj": {
+              "projectPath": "C:\\Users\\kalip\\RiderProjects\\Task-manager\\API\\API.csproj"
             }
           }
         }

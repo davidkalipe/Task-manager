@@ -1837,11 +1837,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kalip\\RiderProjects\\TaskManager\\TaskManager\\TaskManager.csproj",
+      "projectUniqueName": "C:\\Users\\kalip\\RiderProjects\\Task-manager\\TaskManager\\TaskManager.csproj",
       "projectName": "TaskManager",
-      "projectPath": "C:\\Users\\kalip\\RiderProjects\\TaskManager\\TaskManager\\TaskManager.csproj",
+      "projectPath": "C:\\Users\\kalip\\RiderProjects\\Task-manager\\TaskManager\\TaskManager.csproj",
       "packagesPath": "C:\\Users\\kalip\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kalip\\RiderProjects\\TaskManager\\TaskManager\\obj\\",
+      "outputPath": "C:\\Users\\kalip\\RiderProjects\\Task-manager\\TaskManager\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kalip\\AppData\\Roaming\\NuGet\\NuGet.Config",
