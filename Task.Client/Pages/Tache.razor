@@ -1,0 +1,12 @@
+@page "/tache"
+
+<MudPaper Class="pa-16 mx-10 justify-center" Elevation="2">
+    <MudTextField @bind-Value="TextValue" Label="Titre" Variant="Variant.Outlined"></MudTextField>
+    <MudTextField Class="mt-10" @bind-Value="TextValue" Label="Description" Variant="Variant.Outlined"></MudTextField>
+    <MudSwitch Class="mt-5" @bind-Checked="@BasicSwitch"></MudSwitch>
+</MudPaper>
+
+@code {
+    public bool BasicSwitch { get; set; } = false;
+    public string TextValue { get; set; }
+}
