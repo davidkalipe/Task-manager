@@ -1,12 +1,57 @@
 @page "/tache"
+@using Task.Client.Services
+@inject TaskService TaskService;
+@inject IJSRuntime JRuntime;
+@inject ISnackbar Snackbar;
 
 <MudPaper Class="pa-16 mx-10 justify-center" Elevation="2">
-    <MudTextField @bind-Value="TextValue" Label="Titre" Variant="Variant.Outlined"></MudTextField>
-    <MudTextField Class="mt-10" @bind-Value="TextValue" Label="Description" Variant="Variant.Outlined"></MudTextField>
+    <MudTextField @bind-Value="@task.Name" Label="Titre" Variant="Variant.Outlined"></MudTextField>
+    <MudTextField Class="mt-10" @bind-Value="@task.Description" Label="Description" Variant="Variant.Outlined"></MudTextField>
     <MudSwitch Class="mt-5" @bind-Checked="@BasicSwitch"></MudSwitch>
+    <MudButton Class="mb- mt-5" Variant="Variant.Filled" Color="Color.Primary" @onclick="@(CreateTask => Snackbar.Add("Tâche bien ajoutée", Severity.Success))">Ajouter</MudButton>
+    <MudSimpleTable Style="overflow-x: auto;">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Favorite</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var task in tasks)
+            {
+                <tr>
+                    <td>@task.Name</td>
+                    <td>@task.Description</td>
+                    <td>@task.Favorite</td>
+                </tr>
+            }
+        </tbody>
+    </MudSimpleTable>
 </MudPaper>
 
 @code {
+    [Inject] private IDialogService DialogService { get; set; }
     public bool BasicSwitch { get; set; } = false;
-    public string TextValue { get; set; }
+    private List<Models.Task>? tasks = new List<Models.Task>();
+    private Models.Task task = new Models.Task();
+
+    protected override async Task OnInitializedAsync()
+    {
+        tasks = await TaskService.GetAllTask();
+    }
+
+    private async Task CreateTask()
+    {
+        var result = await DialogService.ShowMessageBox("Confirm",
+            "Ajouter la tâche?",
+            yesText: "Oui, ajouter",
+            cancelText: "Annuler");
+
+        if (result == true)
+        {
+            await TaskService.Createtask(task);
+        }
+    }
+
 }
