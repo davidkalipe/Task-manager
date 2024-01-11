@@ -3,6 +3,7 @@ using API.DTO;
 using API.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Task = API.Models.Task;
 
 namespace API.Controllers;
@@ -71,4 +72,10 @@ public class TaskController : ControllerBase
             return NotFound("Tâche introuvable");
         return Ok("Tâche supprimée avec succès");
     }
+
+    protected void OnResultExecuting(ResultExecutingContext context)
+    {
+        context.HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+    }
+
 }

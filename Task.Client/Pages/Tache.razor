@@ -9,15 +9,22 @@
     <MudTextField Class="mt-10" @bind-Value="@task.Description" Label="Description" Variant="Variant.Outlined"></MudTextField>
     <MudSwitch Class="mt-5" @bind-Checked="@BasicSwitch"></MudSwitch>
     <MudButton Class="mb- mt-5" Variant="Variant.Filled" Color="Color.Primary" @onclick="@(CreateTask => Snackbar.Add("Tâche bien ajoutée", Severity.Success))">Ajouter</MudButton>
-    <MudSimpleTable Style="overflow-x: auto;">
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Favorite</th>
-        </tr>
-        </thead>
-        <tbody>
+    <MudText Typo="Typo.h4" Class="my-10">Listes des tâches</MudText>
+    @if (tasks is null)
+    {
+        <MudText>Loading...</MudText>
+    }
+    else
+    {
+        <MudSimpleTable Style="overflow-x: auto;">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Favorite</th>
+            </tr>
+            </thead>
+            <tbody>
             @foreach (var task in tasks)
             {
                 <tr>
@@ -26,8 +33,9 @@
                     <td>@task.Favorite</td>
                 </tr>
             }
-        </tbody>
-    </MudSimpleTable>
+            </tbody>
+        </MudSimpleTable>
+    }
 </MudPaper>
 
 @code {
