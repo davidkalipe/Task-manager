@@ -7,8 +7,7 @@
 <MudPaper Class="pa-16 mx-10 justify-center" Elevation="2">
     <MudTextField @bind-Value="@task.Name" Label="Titre" Variant="Variant.Outlined"></MudTextField>
     <MudTextField Class="mt-10" @bind-Value="@task.Description" Label="Description" Variant="Variant.Outlined"></MudTextField>
-    <MudSwitch Class="mt-5" @bind-Checked="@BasicSwitch"></MudSwitch>
-    <MudButton Class="mb- mt-5" Variant="Variant.Filled" Color="Color.Primary" @onclick="@(CreateTask => Snackbar.Add("Tâche bien ajoutée", Severity.Success))">Ajouter</MudButton>
+    <MudButton Class="mb- mt-5" Variant="Variant.Filled" Color="Color.Primary" @onclick="CreateTask">Ajouter</MudButton>
     <MudText Typo="Typo.h4" Class="my-10">Listes des tâches</MudText>
     @if (tasks is null)
     {
@@ -21,7 +20,6 @@
             <tr>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Favorite</th>
             </tr>
             </thead>
             <tbody>
@@ -30,7 +28,6 @@
                 <tr>
                     <td>@task.Name</td>
                     <td>@task.Description</td>
-                    <td>@task.Favorite</td>
                 </tr>
             }
             </tbody>
@@ -40,13 +37,23 @@
 
 @code {
     [Inject] private IDialogService DialogService { get; set; }
-    public bool BasicSwitch { get; set; } = false;
     private List<Models.Task>? tasks = new List<Models.Task>();
     private Models.Task task = new Models.Task();
-
+    private bool falseFavorite { get; set; } = false;
+    private bool trueFavorite { get; set; } = true;
+    
     protected override async Task OnInitializedAsync()
     {
         tasks = await TaskService.GetAllTask();
+        if (task.Favorite == false)
+        {
+            task.Favorite = falseFavorite;
+        }
+
+        if (task.Favorite == true)
+        {
+            task.Favorite = trueFavorite;
+        }
     }
 
     private async Task CreateTask()
@@ -58,7 +65,13 @@
 
         if (result == true)
         {
-            await TaskService.Createtask(task);
+            var taskAdd = await TaskService.Createtask(task);
+            if (taskAdd is not null)
+            {
+                tasks.Add(taskAdd);
+                task = new Models.Task();
+            }
+            
         }
     }
 
